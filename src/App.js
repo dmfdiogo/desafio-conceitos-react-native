@@ -43,6 +43,7 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Repositórios</Text>
         <FlatList style={styles.repositoryContainer}
           data={repositories}
           keyExtractor={repository => repository.id}
@@ -60,23 +61,9 @@ export default function App() {
                   testID={`repository-likes-${repository.id}`}
                 >{repository.likes} curtidas</Text>
               </View>
-
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => handleLikeRepository(repository.id)}
-                testID={`like-button-${repository.id}`}
-              >
-                <Text style={styles.buttonText}>Curtir</Text>
-              </TouchableOpacity>
             </>
           )}
         />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => console.log(repositories)}
-        >
-          <Text style={styles.buttonText}>Curtir</Text>
-        </TouchableOpacity>
       </SafeAreaView>
     </>
   );
@@ -87,11 +74,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#7159c1",
   },
+  title: {
+    color: '#FFF',
+    fontSize: 32,
+    fontWeight: 'bold',
+    padding: 20,
+  },
   repositoryContainer: {
     marginBottom: 15,
     marginHorizontal: 15,
     backgroundColor: "#fff",
     padding: 20,
+    borderRadius: 4,
   },
   repository: {
     fontSize: 32,
